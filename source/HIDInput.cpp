@@ -1,34 +1,25 @@
-#include "input.h"
+#include "HIDInput.h"
+
 #include <3ds.h>
 
-Input::Input()
+HIDInput::HIDInput()
 {
 
 }
 
-Input::~Input()
-{
-
-}
-
-void Input::scan()
-{
+void HIDInput::scan() {
 	hidScanInput();
-	//hidCircleRead(&circle);
 	keys = hidKeysHeld();
 }
 
-bool Input::startDown()
-{
+bool HIDInput::startDown() {
 	return keys & KEY_START;
 }
 
-float Input::circleXAxis()
-{
+float HIDInput::circleXAxis() {
 	return keys & KEY_DLEFT ? -1.0f : (keys & KEY_DRIGHT ? 1.0f : 0.0f);
 }
-
-float Input::circleYAxis()
-{
+	
+float HIDInput::circleYAxis() {
 	return keys & KEY_DUP ? -1.0f : (keys & KEY_DDOWN ? 1.0f : 0.0f);
 }

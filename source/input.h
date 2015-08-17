@@ -3,18 +3,13 @@
 class Input
 {
 public:
-	Input();
+	virtual ~Input() = default;
 
-	~Input();
+	virtual void scan() = 0;
 
-	void scan();
+	virtual bool startDown() = 0;
 
-	bool startDown();
-
-	float circleXAxis();
+	virtual float circleXAxis() = 0;
 	
-	float circleYAxis();
-
-private:
-	int keys;
+	virtual float circleYAxis() = 0;
 };

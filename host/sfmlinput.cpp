@@ -1,33 +1,33 @@
-#include "input.h"
+#include "sfmlinput.h"
 
 #include <SFML/Window.hpp>
 
-Input::Input()
+SFMLInput::SFMLInput()
 {
 
 }
 
-Input::~Input()
+SFMLInput::~SFMLInput()
 {
 
 }
 
-void Input::scan()
+void SFMLInput::scan()
 {
 	
 }
 
-bool Input::startDown()
+bool SFMLInput::startDown()
 {
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Return);
 }
 
-float Input::circleXAxis()
+float SFMLInput::circleXAxis()
 {
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ? -1.0f : (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) ? 1.0f : 0.0f);
 }
 
-float Input::circleYAxis()
+float SFMLInput::circleYAxis()
 {
 	return sf::Keyboard::isKeyPressed(sf::Keyboard::Up) ? -1.0f : (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) ? 1.0f : 0.0f);
 }

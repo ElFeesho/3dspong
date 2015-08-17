@@ -1,7 +1,8 @@
-cmake_
+cmake_*
 host/Makefile
 host/3dspong
-CMake*
+CMakeCache*
+CMakeFiles/
 build/
 *.3dsx
 *.smdh

@@ -2,20 +2,20 @@
 #include <functional>
 
 #include "gfx.h"
-#include "input.h"
+
 
 #include "pongpaddle.h"
 #include "ball.h"
 
 #ifdef __MACOSX__
+#include "sfmlinput.h"
 bool aptMainLoop()
 {
 	return true;
 }
 #else
-
-#include <3ds.h>
-
+#	include <3ds.h>
+#include "HIDInput.h"
 #endif
 
 class CollisionHandler
@@ -58,10 +58,15 @@ private:
 	Ball &ball;
 };
 
-int main(int argc, char **argv)
+int main(int, char **)
 {
 	Gfx gfx;
-	Input input;
+#ifdef __MACOSX__
+	SFMLInput input;
+#else
+	HIDInput input;
+#endif
+	
 
 	PongPaddle paddle(gfx, input);
 	Ball ball(gfx);
