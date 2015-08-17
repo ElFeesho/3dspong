@@ -5,6 +5,7 @@
 #include "input.h"
 
 #include "pongpaddle.h"
+#include "ball.h"
 
 #ifdef __MACOSX__
 bool aptMainLoop()
@@ -16,90 +17,6 @@ bool aptMainLoop()
 #include <3ds.h>
 
 #endif
-
-
-class Ball
-{
-public:
-	Ball(Gfx &graphics) : gfx(graphics)
-	{
-
-	}
-
-	~Ball()
-	{
-
-	}
-
-	void setX(float xVal)
-	{
-		x = xVal;
-	}
-
-	void setY(float yVal)
-	{
-		y = yVal;
-	}
-
-	int getX()
-	{
-		return x;
-	}
-
-	int getY()
-	{
-		return y;
-	}
-
-	void update()
-	{
-		x += xspeed;
-		if (x > 380)
-		{
-			x = 380;
-			flipXSpeed();
-		}
-		else if(x < 0)
-		{
-			x = 0;
-			flipXSpeed();
-		}
-		
-		y += yspeed;
-		if (y > 220)
-		{
-			y = 220;
-			flipYSpeed();
-		}
-		else if(y < 0)
-		{
-			y = 0;
-			flipYSpeed();
-		}
-	}
-
-	void flipYSpeed()
-	{
-		yspeed *= -1.0f;
-	}
-
-	void flipXSpeed()
-	{
-		xspeed *= -1.0f;
-	}
-
-	void draw()
-	{
-		gfx.drawRectangle(x, y, 20, 20, Colour(0xff, 0xff, 0xff, 0xff));
-	}
-
-private:
-	float xspeed { 2.5f };
-	float yspeed { 2.5f };
-	int y { 80 };
-	int x { 80 };
-	Gfx &gfx;
-};
 
 class CollisionHandler
 {
