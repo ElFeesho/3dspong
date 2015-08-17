@@ -1,10 +1,19 @@
-#include <3ds.h>
-#include <sf2d.h>
 #include <stdio.h>
 #include <functional>
 
 #include "gfx.h"
 #include "input.h"
+
+#ifdef __MACOSX__
+bool aptMainLoop()
+{
+	return true;
+}
+#else
+
+#include <3ds.h>
+
+#endif
 
 class PongPaddle
 {
@@ -150,20 +159,19 @@ public:
 		// Colliding with right side of paddle
 		bool collidingRight = pointInRange(pongPaddle.getX()+20, ball.getX(), ball.getX()+20) && (pointInRange(ball.getY(), pongPaddle.getY(), pongPaddle.getY()+80) || pointInRange(ball.getY()+20, pongPaddle.getY(), pongPaddle.getY()+80));
 		bool collidingUnder = pointInRange(pongPaddle.getY()+80, ball.getY(), ball.getY()+20) && (pointInRange(ball.getX(), pongPaddle.getX(), pongPaddle.getX()+20) || pointInRange(ball.getX()+20, pongPaddle.getX(), pongPaddle.getX()+20));
-		bool collidingTop = pointInRange(pongPaddle.getY(), ball.getY(), ball.getY()+20) && (pointInRange(ball.getX(), pongPaddle.getX(), pongPaddle.getX()+20) || pointInRange(ball.getX()+20, pongPaddle.getX(), pongPaddle.getX()+20));
+		bool collidingTop 	= pointInRange(pongPaddle.getY(), ball.getY(), ball.getY()+20) && (pointInRange(ball.getX(), pongPaddle.getX(), pongPaddle.getX()+20) || pointInRange(ball.getX()+20, pongPaddle.getX(), pongPaddle.getX()+20));
+
 		if (collidingRight)
 		{
 			ball.flipXSpeed();
 			ball.setX(pongPaddle.getX()+20);
 		}
-		
-		if (collidingUnder && !collidingRight)
+		else if (collidingUnder)
 		{
 			ball.flipYSpeed();
 			ball.setY(pongPaddle.getY()+80);
-		}
-
-		if (collidingTop && !collidingRight)
+		} 
+		else if (collidingTop)
 		{
 			ball.flipYSpeed();
 			ball.setY(pongPaddle.getY()-20);

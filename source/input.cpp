@@ -1,4 +1,5 @@
 #include "input.h"
+#include <3ds.h>
 
 Input::Input()
 {
@@ -13,7 +14,7 @@ Input::~Input()
 void Input::scan()
 {
 	hidScanInput();
-	hidCircleRead(&circle);
+	//hidCircleRead(&circle);
 	keys = hidKeysHeld();
 }
 

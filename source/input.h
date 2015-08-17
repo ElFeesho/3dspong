@@ -1,7 +1,5 @@
 #pragma once
 
-#include <3ds.h>
-
 class Input
 {
 public:
@@ -19,5 +17,4 @@ public:
 
 private:
 	int keys;
-	circlePosition circle;
 };
