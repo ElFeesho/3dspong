@@ -4,6 +4,8 @@
 #include "gfx.h"
 #include "input.h"
 
+#include "pongpaddle.h"
+
 #ifdef __MACOSX__
 bool aptMainLoop()
 {
@@ -15,54 +17,6 @@ bool aptMainLoop()
 
 #endif
 
-class PongPaddle
-{
-public:
-	PongPaddle(Gfx &graphics, Input &inputHandler) : gfx(graphics), input(inputHandler)
-	{
-
-	}
-
-	~PongPaddle()
-	{
-
-	}
-
-	int getX()
-	{
-		return x;
-	}
-
-	int getY()
-	{
-		return y;
-	}
-
-	void update()
-	{
-		y += input.circleYAxis() * 3.0f;
-
-		if (y > 240-80)
-		{
-			y = 240 - 80;
-		}
-		else if (y < 0)
-		{
-			y = 0;
-		}
-	}
-
-	void draw()
-	{
-		gfx.drawRectangle(x, y, 20, 80, Colour(0xff, 0xff, 0xff, 0xff));
-	}
-
-private:
-	int x { 20 };
-	int y { 80 };
-	Gfx &gfx;
-	Input &input;
-};
 
 class Ball
 {
