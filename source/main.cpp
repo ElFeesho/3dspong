@@ -17,11 +17,11 @@ int main(int argc, char **argv)
 		input.scan();
 		
 		gfx.renderOnTop([&](){
-			sf2d_draw_rectangle(20, 60, 40, 40, RGBA8(0xFF, 0x00, 0x00, 0xFF));
+			gfx.drawRectangle(20, 60, 40, 40, Colour(0xFF, 0x00, 0x00, 0xFF));
 		});
 
 		gfx.renderOnBottom([&](){
-			sf2d_draw_rectangle(20, 60, 40, 40, RGBA8(0xFF, 0x00, 0x00, 0xFF));
+			gfx.drawRectangle(20, 60, 40, 40, Colour(0xFF, 0x00, 0x00, 0xFF));
 		});
 
 		gfx.flip();

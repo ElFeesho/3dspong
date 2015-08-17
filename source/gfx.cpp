@@ -31,3 +31,8 @@ void Gfx::renderOnBottom(const std::function<void()> &renderBlock)
 	renderBlock();
 	sf2d_end_frame();
 }
+
+void Gfx::drawRectangle(int x, int y, int w, int h, const Colour &colour)
+{
+	sf2d_draw_rectangle(x, y, w, h, RGBA8(colour.red, colour.green, colour.blue, colour.alpha));
+}
