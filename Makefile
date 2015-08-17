@@ -26,6 +26,9 @@ include $(DEVKITARM)/3ds_rules
 #     - icon.png
 #     - <libctru folder>/default_icon.png
 #---------------------------------------------------------------------------------
+APP_TITLE	:=	3DS Pong
+APP_DESCRIPTION :=	Pong, but for the 3ds
+APP_AUTHOR	:=	"ElFeesho"
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	source
