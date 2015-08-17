@@ -21,3 +21,13 @@ bool Input::startDown()
 {
 	return keys & KEY_START;
 }
+
+float Input::circleXAxis()
+{
+	return keys & KEY_DLEFT ? -1.0f : (keys & KEY_DRIGHT ? 1.0f : 0.0f);
+}
+
+float Input::circleYAxis()
+{
+	return keys & KEY_DUP ? -1.0f : (keys & KEY_DDOWN ? 1.0f : 0.0f);
+}
