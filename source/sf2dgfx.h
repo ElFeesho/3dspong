@@ -21,6 +21,7 @@ public:
 
 	// Drawing methods
 	void drawRectangle(int x, int y, int w, int h, const Colour &colour) override;
+	void drawText(const std::string &text, int x, int y) override;
 
 private:
 	FT_Library freetypeHandle;

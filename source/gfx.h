@@ -23,4 +23,5 @@ public:
 
 	// Drawing methods
 	virtual void drawRectangle(int x, int y, int w, int h, const Colour &colour) = 0;
+	virtual void drawText(const std::string &text, int x, int y) = 0;
 };

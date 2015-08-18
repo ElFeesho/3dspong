@@ -90,8 +90,14 @@ int main(int, char **)
 
 		gfx.renderOnTop([&]{
 			ball.draw();
-			paddle.draw();	
+			paddle.draw();
 		});
+
+		gfx.renderOnBottom([&]{
+			gfx.drawText("Hi there", 10, 100);
+			gfx.drawText("Hi there", 10, 200);
+		});
+
 
 		gfx.flip();
 	}
