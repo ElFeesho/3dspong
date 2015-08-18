@@ -1,40 +1,40 @@
-#include "gfx.h"
+#include "sfmlgfx.h"
 
 #include <SFML/Graphics.hpp>
 
 static sf::RenderWindow *window;
 
-Gfx::Gfx()
+SFMLGfx::SFMLGfx()
 {
 	window = new sf::RenderWindow(sf::VideoMode(400, 240), "3dspong");
 	window->clear(sf::Color(0x40, 0x40, 0x40));
 
 }
 
-Gfx::~Gfx()
+SFMLGfx::~SFMLGfx()
 {
 	
 }
 
-void Gfx::flip()
+void SFMLGfx::flip()
 {
 	window->display();
 	window->clear(sf::Color(0x40, 0x40, 0x40));
 }
 
-void Gfx::renderOnTop(const std::function<void()> &renderBlock)
+void SFMLGfx::renderOnTop(const std::function<void()> &renderBlock)
 {
 	renderBlock();
 	
 }
 
-void Gfx::renderOnBottom(const std::function<void()> &renderBlock)
+void SFMLGfx::renderOnBottom(const std::function<void()> &renderBlock)
 {
 	renderBlock();
 	
 }
 
-void Gfx::drawRectangle(int x, int y, int w, int h, const Colour &colour)
+void SFMLGfx::drawRectangle(int x, int y, int w, int h, const Colour &colour)
 {
 	sf::RectangleShape rectangle;
 

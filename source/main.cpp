@@ -8,14 +8,18 @@
 #include "ball.h"
 
 #ifdef __MACOSX__
-#include "sfmlinput.h"
+#	include "sfmlinput.h"
+#	include "sfmlgfx.h"
+
 bool aptMainLoop()
 {
 	return true;
 }
+
 #else
 #	include <3ds.h>
-#include "HIDInput.h"
+#	include "HIDInput.h"
+#	include "sf2dgfx.h"
 #endif
 
 class CollisionHandler
@@ -60,11 +64,13 @@ private:
 
 int main(int, char **)
 {
-	Gfx gfx;
+	
 #ifdef __MACOSX__
+	SFMLGfx gfx;
 	SFMLInput input;
 #else
 	HIDInput input;
+	SF2DGfx gfx;
 #endif
 	
 

@@ -14,17 +14,13 @@ struct Colour
 class Gfx
 {
 public:
-	Gfx();
+	virtual ~Gfx() = default;
 
-	~Gfx();
+	virtual void flip() = 0;
 
-	void flip();
-
-	void renderOnTop(const std::function<void()> &renderBlock);
-
-	void renderOnBottom(const std::function<void()> &renderBlock);
+	virtual void renderOnTop(const std::function<void()> &renderBlock) = 0;
+	virtual void renderOnBottom(const std::function<void()> &renderBlock) = 0;
 
 	// Drawing methods
-
-	void drawRectangle(int x, int y, int w, int h, const Colour &colour);
+	virtual void drawRectangle(int x, int y, int w, int h, const Colour &colour) = 0;
 };
