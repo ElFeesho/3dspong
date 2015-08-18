@@ -2,6 +2,12 @@
 
 #include "gfx.h"
 
+
+#include <ft2build.h>                                            
+                                                                   
+#include FT_FREETYPE_H                                           
+#include FT_OUTLINE_H  
+
 class SF2DGfx : public Gfx
 {
 public:
@@ -15,4 +21,8 @@ public:
 
 	// Drawing methods
 	void drawRectangle(int x, int y, int w, int h, const Colour &colour) override;
+
+private:
+	FT_Library freetypeHandle;
+	FT_Face font;
 };
