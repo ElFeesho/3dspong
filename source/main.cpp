@@ -94,8 +94,8 @@ int main(int, char **)
 		});
 
 		gfx.renderOnBottom([&]{
-			gfx.drawText("Hi there", 10, 100);
-			gfx.drawText("Hi there", 10, 200);
+			gfx.drawText("Hello World", 10, 100);
+			
 		});
 
 
