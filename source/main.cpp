@@ -71,6 +71,9 @@ int main(int, char **)
 #else
 	HIDInput input;
 	SF2DGfx gfx;
+
+	//consoleDebugInit(debugDevice_CONSOLE);
+	consoleDebugInit(debugDevice_3DMOO);
 #endif
 	
 
@@ -95,7 +98,6 @@ int main(int, char **)
 
 		gfx.renderOnBottom([&]{
 			gfx.drawText("Hello World", 10, 100);
-			
 		});
 
 

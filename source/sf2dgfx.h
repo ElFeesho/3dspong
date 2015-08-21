@@ -1,22 +1,17 @@
 #pragma once
 
+#include <sf2d.h>
+
 #include "gfx.h"
 
 #include <string>
-#include <vector>
+#include <map>
 
 #include <ft2build.h>                                            
                                                                    
 #include FT_FREETYPE_H                                           
 #include FT_OUTLINE_H  
 
-struct Size
-{
-	Size(int width, int height) : w(width), h(height){}
-	~Size() {}
-	int w;
-	int h;
-};
 
 class SF2DGfx : public Gfx
 {
@@ -34,12 +29,15 @@ public:
 	void drawText(const std::string &text, int x, int y) override;
 
 	void drawCharacter(char character, int x, int y);
-
-	Size measureText(const std::string &text);
 private:
 	FT_Library freetypeHandle;
 	FT_Face font;
 	std::string characterMap;
-	std::vector<int> characterWidths;
-	std::vector<int> characterHeights;
+	std::map<char, unsigned int> characterWidths;
+	std::map<char, unsigned int> characterHeights;
+	std::map<char, unsigned int> spacing;
+	std::map<char, unsigned int> baseline;
+	std::map<char, unsigned int> xPositions;
+	std::map<char, unsigned int> yPositions;
+	sf2d_texture *characterMapTexture;
 };
