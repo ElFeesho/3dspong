@@ -25,10 +25,13 @@ public:
 
 	void draw();
 
+	int getFouls();
+
 private:
 	float xspeed { 2.5f };
 	float yspeed { 2.5f };
 	int y { 80 };
 	int x { 80 };
+	int fouls { 0 };
 	Gfx &gfx;
 };

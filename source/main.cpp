@@ -29,7 +29,7 @@ public:
 
 	~CollisionHandler() {}
 
-	void checkCollision()
+	bool checkCollision()
 	{
 		// Colliding with right side of paddle
 		bool collidingRight = pointInRange(pongPaddle.getX()+20, ball.getX(), ball.getX()+20) && (pointInRange(ball.getY(), pongPaddle.getY(), pongPaddle.getY()+80) || pointInRange(ball.getY()+20, pongPaddle.getY(), pongPaddle.getY()+80));
@@ -51,6 +51,8 @@ public:
 			ball.flipYSpeed();
 			ball.setY(pongPaddle.getY()-20);
 		}
+
+		return collidingTop || collidingRight || collidingUnder;
 	}
 
 	bool pointInRange(int point, int rangeStart, int rangeEnd)
@@ -81,6 +83,7 @@ int main(int, char **)
 	Ball ball(gfx);
 	CollisionHandler collisionHandler(paddle, ball);
 
+	int score = 0;
 	// Main loop
 	while (aptMainLoop() && !input.startDown())
 	{
@@ -89,7 +92,10 @@ int main(int, char **)
 		paddle.update();
 		ball.update();
 
-		collisionHandler.checkCollision();
+		if (collisionHandler.checkCollision())
+		{
+			score++;
+		}
 
 		gfx.renderOnTop([&]{
 			ball.draw();
@@ -97,7 +103,12 @@ int main(int, char **)
 		});
 
 		gfx.renderOnBottom([&]{
-			gfx.drawText("Hello World", 10, 100);
+			char scoreBuffer[16] = { 0 };
+			sprintf(scoreBuffer, "Score: %d", score);
+			gfx.drawText(scoreBuffer, 10, 100);
+			char foulBuffer[16] = { 0 };
+			sprintf(foulBuffer, "Fouls: %d", ball.getFouls());
+			gfx.drawText(foulBuffer, 10, 150);
 		});
 
 

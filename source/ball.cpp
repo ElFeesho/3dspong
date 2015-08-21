@@ -40,10 +40,11 @@ void Ball::update()
 		x = 380;
 		flipXSpeed();
 	}
-	else if(x < -100)
+	else if(x < -200)
 	{
 		x = 160;
 		flipXSpeed();
+		fouls++;
 	}
 	
 	y += yspeed;
@@ -72,4 +73,9 @@ void Ball::flipXSpeed()
 void Ball::draw()
 {
 	gfx.drawRectangle(x, y, 20, 20, Colour(0xff, 0xff, 0xff, 0xff));
+}
+
+int Ball::getFouls()
+{
+	return fouls;
 }
